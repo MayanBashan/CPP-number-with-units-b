@@ -1,15 +1,14 @@
 /**
  * Author: Mayan Bashan
  */
+
 #include "NumberWithUnits.hpp"
 #include <iostream>
 #include <ostream>
 #include <string>
 #include <fstream>
-#include <stdexcept>
 #include <exception>
 #include <map>
-#include <math.h>
 using namespace std;
 
 namespace ariel{
@@ -22,10 +21,10 @@ namespace ariel{
             if (original_unit == unit_to_convert){
                 return 1;
             }
-            // Go over the units_map
+            // Goes over the units_map
             for(map<string, map<string, double>>::iterator it = NumberWithUnits::units_map.begin(); it!= NumberWithUnits::units_map.end(); it++){
                 if (it->first == original_unit){
-                    // Go over the inner map in units_map
+                    // Goes over the inner map in units_map
                     for (map<string,double>::iterator inner_map = (it->second).begin(); inner_map!=(it->second).end(); inner_map++){
                         if (inner_map->first == unit_to_convert){
                             return inner_map->second;
@@ -250,7 +249,7 @@ namespace ariel{
             return output;
         }
 
-        istream& operator >>(istream& input, NumberWithUnits& nwu){ // friend func
+        istream& operator >>(istream& input, NumberWithUnits& nwu){ // friend function
             double new_number = 0;
             string new_number_string;
             string new_unit;
@@ -272,7 +271,6 @@ namespace ariel{
                 }
                 input.get(ch);
             }
-
             if (NumberWithUnits::units_map.find(new_unit) == NumberWithUnits::units_map.end()){ //unit doesn't appear in map
                 throw("Invalid Input - No such Unit");
             }

@@ -7,38 +7,11 @@
 #include <ostream>
 #include <string>
 #include <fstream>
-#include <stdexcept>
 #include <exception>
 #include <map>
 using namespace std;
 
-void update_table(){
-    ofstream myfile;
-    myfile.open ("myTestFile.txt");
-    myfile << "1 km = 1000 m" << endl;
-    myfile << "1 m = 100 cm" << endl;
-    myfile << "1 kg = 1000 g" << endl;
-    myfile << "1 ton = 1000 kg" << endl;
-    myfile << "1 hour = 60 min" << endl;
-    myfile << "1 min = 60 sec" << endl;
-    myfile << "1 day = 24 hour" << endl;
-    myfile << "1 month = 30 day" << endl;
-    myfile << "1 year = 12 month" << endl;   
-    myfile.close(); 
-    ifstream units_file{"myTestFile.txt"};
-    ariel::NumberWithUnits::read_units(units_file);
-}
-void update_table(string s){
-    ofstream myfile;
-    myfile.open ("myTestFile.txt");
-    myfile << s << endl;
-    myfile.close(); 
-    ifstream units_file{"myTestFile.txt"};
-    ariel::NumberWithUnits::read_units(units_file);
-}
-
 int main(){
-    //update_table();
     ofstream myfile;
     myfile.open ("myTestFile.txt");
     myfile << "1 km = 1000 m" << endl;
@@ -87,7 +60,7 @@ int main(){
         cin >> unit_option2;
         while (unit_option1 < 0 || unit_option2 > 8){
             cout << "Invalid input, please try again, choose a unit from the following: \n";
-            cout << "   0.km\n   1.m\n   2.kg\n   3.ton\n   4.hour\n   5.min\n   6.day\n   7.month\n   8.year\n";
+            cout << "   0. km\n   1. m\n   2. kg\n   3. ton\n   4. hour\n   5. min\n   6. day\n   7. month\n   8. year\n";
             cin >> unit_option1;
         }
         ariel::NumberWithUnits B = ariel::NumberWithUnits(num2, all_units[unit_option2]);
@@ -215,6 +188,5 @@ int main(){
         }
     }
     return 0;
-
 }
      

@@ -11,14 +11,14 @@ using namespace std;
 
 namespace ariel{
     class NumberWithUnits{
-        
-        double number;
-        string unit; 
 
-        public:
+        private:
+            double number;
+            string unit; 
             static std::map<std::string, std::map<std::string, double>> units_map;
             static std::map<std::string, bool> units_map_visited;
-
+        
+        public:
             NumberWithUnits(){
                 number = 0;
                 unit = "";
@@ -68,9 +68,5 @@ namespace ariel{
 
             friend ostream& operator <<(ostream& output, const NumberWithUnits& nwu);
             friend istream& operator >>(istream& input, NumberWithUnits& nwu);
-            
-            
-            
-
     };
 }
